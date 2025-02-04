@@ -22,9 +22,9 @@ const Home = ({ navigation }) => {
     const [data, setdata] = useState();
 
     const Fetching = async () => {
-        const fetching = await fetch("https://dummyjson.com/products/category/smartphones");
+        const fetching = await fetch("https://server7-wb1d.onrender.com/v12/popular/post");
         const convert = await fetching.json();
-        const Data = convert.products;
+        const Data = convert.posts;
         setdata(Data)
         console.log(Data)
     }
@@ -94,7 +94,7 @@ const style = StyleSheet.create({
     }
     , navigationBar: {
         width: '100%',
-        paddingTop: 13,
+        paddingTop: 3,
         paddingBottom: 4,
         flexDirection: 'row',
         justifyContent: 'space-between',

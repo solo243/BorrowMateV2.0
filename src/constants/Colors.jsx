@@ -17,3 +17,12 @@ export const Gray = {
     gray800: "#111827",
 }
 
+
+
+export const px = {
+    sm: 10,
+    md: 14,
+    lg: 18,
+    xl: 22,
+    xxl: 24
+}

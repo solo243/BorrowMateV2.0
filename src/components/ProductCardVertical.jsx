@@ -11,13 +11,13 @@ const ProductCardVertical = ({ data, navigation }) => {
                 <Image
                     resizeMethod='cover'
 
-                    source={{ uri: data.thumbnail }}
+                    source={{ uri: data.image }}
                     style={style.ProImage} />
                 <TouchableOpacity style={style.heartIcon}>
                     <Ionicons name="heart" size={23} color={Color.cherryRed} />
                 </TouchableOpacity>
                 <View style={{ paddingHorizontal: 4 }}>
-                    <Text style={style.productTitle}>
+                    <Text numberOfLines={2} style={style.productTitle}>
                         {data.title ? data.title : "Not Available"}
                     </Text>
                     <View style={style.priceRow}>
@@ -114,17 +114,20 @@ const style = StyleSheet.create({
         backgroundColor: Gray.gray100
     },
     productTitle: {
-        fontSize: 16,
-        fontWeight: '500'
+        fontSize: 15,
+        fontWeight: '500',
+        color: Gray.gray700
     },
     priceRow: {
         flexDirection: 'row',
-        // gap: 10,
-        paddingVertical: 3.5,
+        // gap: 10,backg
+        // backgroundColor: 'red',
+        // paddingVertical: 5,
+        paddingTop: 4.5,
         alignItems: 'center'
     },
     productPrice: {
-        fontSize: 17,
+        fontSize: 15.5,
         fontWeight: '700'
     },
     discountPrice: {
@@ -132,7 +135,7 @@ const style = StyleSheet.create({
     },
     heartIcon: {
         padding: 5,
-        backgroundColor: Gray.gray300,
+        // backgroundColor: Gray.gray300,
         borderRadius: 200,
         position: 'absolute',
         right: 10,

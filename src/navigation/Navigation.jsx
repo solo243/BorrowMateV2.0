@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import Category from '../screens/Category';
-import Orders from '../screens/Orders';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Color, Gray } from '../constants/Colors';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -16,6 +15,10 @@ import TostConfigFile from '../constants/TostConfigFile';
 import Search from '../screens/StackScreens/Search';
 import Notification from '../screens/StackScreens/Notification';
 import ProductDetail from '../screens/StackScreens/Detail';
+import Chats from '../screens/StackScreens/Chats';
+import Screen2 from '../screens/PostItmeStackScreen/Screen2';
+import Screen1 from '../screens/PostItmeStackScreen/Screen1';
+import Screen3 from '../screens/PostItmeStackScreen/Screen3';
 
 
 
@@ -41,11 +44,22 @@ export const MyStacks = () => (
         <Stack.Screen options={{ animation: "slide_from_right" }} name="Categories" component={Category} />
         <Stack.Screen options={{ animation: "slide_from_right" }} name="Details" component={ProductDetail} />
         <Stack.Screen options={{ animation: "fade" }} name="Notificaiton" component={Notification} />
+
     </Stack.Navigator>
 )
 
 
 
+
+
+const PostScreens = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='screen1' options={{ animation: 'slide_from_left' }} component={Screen1} />
+        <Stack.Screen name='screen2' options={{ animation: 'slide_from_right' }} component={Screen2} />
+        <Stack.Screen name='screen3' options={{ animation: 'slide_from_right' }} component={Screen3} />
+
+    </Stack.Navigator>
+)
 
 const Tab = createBottomTabNavigator();
 export const BottomTabNavigation = () => (
@@ -62,7 +76,7 @@ export const BottomTabNavigation = () => (
                 ),
         }}
         />
-        <Tab.Screen name='Category' component={Category} options={{
+        <Tab.Screen name='Chats' component={Chats} options={{
             tabBarIcon: ({ focused }) =>
                 focused ? (
                     <AntDesign name="appstore1" size={24} color={Color.secondary} />
@@ -70,14 +84,16 @@ export const BottomTabNavigation = () => (
                     <AntDesign name="appstore-o" size={24} color={Gray.gray500} />
                 ),
         }} />
-        <Tab.Screen name='Orders' component={Orders} options={{
-            tabBarIcon: ({ focused }) =>
-                focused ? (
-                    <MaterialCommunityIcons name="clock-time-four" size={26} color={Color.secondary} />
-                ) : (
-                    <MaterialCommunityIcons name="clock-time-four-outline" size={26} color={Gray.gray500} />
-                ),
-        }} />
+        <Tab.Screen name='PostScreens' component={PostScreens}
+            options={{
+
+                tabBarIcon: ({ focused }) =>
+                    focused ? (
+                        <MaterialCommunityIcons name="clock-time-four" size={26} color={Color.secondary} />
+                    ) : (
+                        <MaterialCommunityIcons name="clock-time-four-outline" size={26} color={Gray.gray500} />
+                    ),
+            }} />
         <Tab.Screen name='Profile' component={Profile} options={{
             tabBarIcon: ({ focused }) =>
                 focused ? (
