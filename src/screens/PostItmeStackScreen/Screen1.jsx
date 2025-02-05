@@ -1,15 +1,16 @@
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { CategorieData } from '../../constants/CateforiesData';
+import { Gray } from '../../constants/Colors';
 
 const YourComponent = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.innerContainer}>
-                <View style={styles.header}>
+                {/* <View style={styles.header}>
                     <Text style={styles.headerText}>Select Category</Text>
-                </View>
+                </View> */}
 
-                <View style={styles.categoryContainer}>
+                {/* <View style={styles.categoryContainer}>
                     {CategorieData.map((item, index) => {
                         const isLastRow = index >= CategorieData.length - (CategorieData.length % 2 || 2);
 
@@ -28,6 +29,28 @@ const YourComponent = ({ navigation }) => {
                             </TouchableOpacity>
                         );
                     })}
+                </View> */}
+                <Text style={{ fontSize: 22, textAlign: 'center', maxWidth: 250, alignSelf: 'center', fontWeight: '600', paddingTop: 30 }}>
+                    Hello, what are you posting today?
+                </Text>
+                <Text style={{ paddingBottom: 25, alignSelf: 'center', paddingTop: 10, fontSize: 16, color: Gray.gray500 }}>Select the area that best suits your product</Text>
+                <View style={{ flex: 1, alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', width: '80%', alignSelf: 'center', gap: 10 }}>
+                    {CategorieData.map((item) => (
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("screen2")}
+                            key={item.id || index}
+                            style={{
+                                backgroundColor: item.bg,
+                                padding: 10, width: '48%',
+                                borderRadius: 10, alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 10,
+                                height: 130
+                            }}>
+                            {item.icon}
+                            <Text style={{ color: Gray.gray700, fontSize: 16, fontWeight: '500' }}>{item.name}</Text>
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </View>
         </SafeAreaView>

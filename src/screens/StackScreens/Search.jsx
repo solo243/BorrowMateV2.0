@@ -36,7 +36,9 @@ const Search = ({ navigation }) => {
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
                 contentContainerStyle={{ width: '100%', alignSelf: 'center', }}
                 renderItem={({ item }) => (
-                    <ProductCardVertical navigation={navigation} data={item} />
+                    <>
+                    </>
+                    // <ProductCardVertical navigation={navigation} data={item} />
                 )} />
             {/* <ScrollView
                 bounces={false}
@@ -53,7 +55,8 @@ const Search = ({ navigation }) => {
 const style = StyleSheet.create({
     mainCont: {
         flex: 1,
-        paddingTop: 30
+        paddingTop: 30,
+        backgroundColor: 'white'
     },
     searchBoxWrapper: {
         flex: 1,

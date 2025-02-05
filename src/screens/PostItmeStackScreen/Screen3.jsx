@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, TextInput, StyleSheet, ActivityIndicator } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 import PostItemInputRow from '../../components/PostItemInputRow';
 import { Color, Gray } from '../../constants/Colors';
 import axios from 'axios';
@@ -96,7 +96,7 @@ const Screen3 = ({ route }) => {
                         </View>
                         <View style={styles.inputWrapper}>
                             <Text style={styles.label}>Duration</Text>
-                            <DropDownPicker
+                            {/* <DropDownPicker
                                 style={styles.dropdown}
                                 textStyle={styles.dropdownText}
                                 value={duration}
@@ -106,7 +106,7 @@ const Screen3 = ({ route }) => {
                                 setOpen={setOpen}
                                 setValue={setDuration}
                                 setItems={setItems}
-                            />
+                            /> */}
                         </View>
                     </View>
                     {isLoading ? (

@@ -9,8 +9,6 @@ import Search from '../../assets/icons/search.svg'
 import CategoriesTextRow from '../components/Home/CategoriesTextRow'
 import CategoriesCircleRow from '../components/Home/CategoriesCircleRow'
 import DealArea from '../components/Home/DealArea'
-import HorizontalProductCard from '../components/HorizontalProductCard'
-import HorizontalLine from '../components/HorizontalLine'
 import VerticalProductCard from '../components/VerticalProductCard'
 
 const Home = ({ navigation }) => {
@@ -58,14 +56,15 @@ const Home = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
                 {/* TODO: ADsection  */}
-                <View style={{ width: '100%', height: 180 }}>
+                {/* <View style={{ width: '100%', height: 180 }}>
                     <DealArea />
-                </View>
+                </View> */}
                 {/* TODO: Category Row  */}
-                <View style={{ paddingTop: 20 }}>
+                <View style={{ paddingTop: 0 }}>
                     <CategoriesTextRow text={"Categories"} />
                     <CategoriesCircleRow navigation={navigation} />
                 </View>
+
 
                 {/* TODO: Product Cards  */}
                 <View style={{
@@ -112,7 +111,7 @@ const style = StyleSheet.create({
         gap: 4,
     }, searchBarCont: {
         width: '100%',
-        paddingHorizontal: 13,
+        paddingHorizontal: 12,
         paddingTop: 10,
         paddingBottom: 18,
         paddingVertical: 11
@@ -120,13 +119,13 @@ const style = StyleSheet.create({
     searchBar: {
         width: '100%',
         flexDirection: 'row',
-        borderWidth: 2,
+        borderWidth: 1.5,
         alignItems: 'center',
         gap: 8,
         paddingHorizontal: 20,
         borderColor: Gray.gray200,
         paddingVertical: 11,
-        borderRadius: 14,
+        borderRadius: 9,
         borderCurve: 'continuous'
     },
     searchText: {

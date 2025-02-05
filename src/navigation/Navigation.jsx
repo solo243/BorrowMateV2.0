@@ -19,6 +19,7 @@ import Chats from '../screens/StackScreens/Chats';
 import Screen2 from '../screens/PostItmeStackScreen/Screen2';
 import Screen1 from '../screens/PostItmeStackScreen/Screen1';
 import Screen3 from '../screens/PostItmeStackScreen/Screen3';
+import Orders from '../screens/Orders';
 
 
 
@@ -79,9 +80,11 @@ export const BottomTabNavigation = () => (
         <Tab.Screen name='Chats' component={Chats} options={{
             tabBarIcon: ({ focused }) =>
                 focused ? (
-                    <AntDesign name="appstore1" size={24} color={Color.secondary} />
+                    // <AntDesign name="appstore1" size={24} color={Color.secondary} />
+                    <Ionicons name="chatbox-ellipses" size={25} color={Color.secondary} />
                 ) : (
-                    <AntDesign name="appstore-o" size={24} color={Gray.gray500} />
+                    // <AntDesign name="appstore-o" size={24} color={Gray.gray500} />
+                    <Ionicons name="chatbox-ellipses-outline" size={25} color={Gray.gray500} />
                 ),
         }} />
         <Tab.Screen name='PostScreens' component={PostScreens}
@@ -89,9 +92,19 @@ export const BottomTabNavigation = () => (
 
                 tabBarIcon: ({ focused }) =>
                     focused ? (
-                        <MaterialCommunityIcons name="clock-time-four" size={26} color={Color.secondary} />
+                        <AntDesign name="pluscircle" size={23} color={Color.secondary} />
                     ) : (
-                        <MaterialCommunityIcons name="clock-time-four-outline" size={26} color={Gray.gray500} />
+                        <AntDesign name="pluscircleo" size={23} color={Gray.gray500} />
+                    ),
+            }} />
+        <Tab.Screen name='MyOrders' component={Orders}
+            options={{
+
+                tabBarIcon: ({ focused }) =>
+                    focused ? (
+                        <Ionicons name="newspaper" size={23} color={Color.secondary} />
+                    ) : (
+                        <Ionicons name="newspaper-outline" size={23} color={Gray.gray500} />
                     ),
             }} />
         <Tab.Screen name='Profile' component={Profile} options={{

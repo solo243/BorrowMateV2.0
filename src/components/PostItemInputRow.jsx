@@ -11,7 +11,7 @@ const PostItemInputRow = ({ label, setter, value, keyboardType, placeholder }) =
                 value={value}
                 onChangeText={setter}
                 placeholder={placeholder}
-                cursorColor={Gray.gray700}
+                cursorColor={Gray.gray600}
                 style={styles.input}
             />
         </View>
@@ -21,7 +21,7 @@ const PostItemInputRow = ({ label, setter, value, keyboardType, placeholder }) =
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        gap: 8,
+        gap: 6,
         paddingHorizontal: 20,
     },
     label: {
@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingHorizontal: 13,
         fontSize: 15,
-        borderRadius: 8,
+        borderRadius: 7,
         borderColor: Gray.gray300,
-        paddingVertical: 20,
+        paddingVertical: 15,
         fontWeight: '600',
         width: '100%',
     },
