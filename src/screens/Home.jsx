@@ -10,6 +10,7 @@ import CategoriesTextRow from '../components/Home/CategoriesTextRow'
 import CategoriesCircleRow from '../components/Home/CategoriesCircleRow'
 import DealArea from '../components/Home/DealArea'
 import VerticalProductCard from '../components/VerticalProductCard'
+import { getPosts } from '../Api/APi'
 
 const Home = ({ navigation }) => {
 
@@ -26,6 +27,7 @@ const Home = ({ navigation }) => {
         setdata(Data)
         console.log(Data)
     }
+
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>

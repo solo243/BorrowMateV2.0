@@ -20,8 +20,7 @@ import Screen2 from '../screens/PostItmeStackScreen/Screen2';
 import Screen1 from '../screens/PostItmeStackScreen/Screen1';
 import Screen3 from '../screens/PostItmeStackScreen/Screen3';
 import Orders from '../screens/Orders';
-
-
+import SignUp from '../screens/LoginSignUpScreens/SignUp';
 
 
 const Navigation = () => {
@@ -45,7 +44,14 @@ export const MyStacks = () => (
         <Stack.Screen options={{ animation: "slide_from_right" }} name="Categories" component={Category} />
         <Stack.Screen options={{ animation: "slide_from_right" }} name="Details" component={ProductDetail} />
         <Stack.Screen options={{ animation: "fade" }} name="Notificaiton" component={Notification} />
+    </Stack.Navigator>
+)
 
+
+
+const LoginSignUp = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='SignUp' component={SignUp} />
     </Stack.Navigator>
 )
 

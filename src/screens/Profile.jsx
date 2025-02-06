@@ -1,11 +1,13 @@
-import {View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image,  FlatList} from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
 import React from 'react'
-import {Color, Gray} from '../constants/Colors'
+import { Color, Gray } from '../constants/Colors'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import HorizontalLine from '../components/HorizontalLine';
 import ProductCardVertical from '../components/ProductCardVertical';
+import Feather from '@expo/vector-icons/Feather';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
 
 
     return (
@@ -88,6 +90,11 @@ const Profile = ({navigation}) => {
                     <ProductCardVertical data={item} navigation={navigation}/>
                 )}/>
         </View>
+
+
+
+
+
         // <ScrollView>
         //     <SafeAreaView style={style.mainCont}>
         //         <View style={style.topBar}>
@@ -126,6 +133,30 @@ const Profile = ({navigation}) => {
         //         </View>
         //     </SafeAreaView>
         // </ScrollView >
+
+
+
+        // <SafeAreaView style={{ flex: 1, backgroundColor: 'white', paddingTop: 50 }}>
+        //     <View style={{ flex: 1, backgroundColor: 'white' }}>
+        //         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 15, borderBottomWidth: 1, borderColor: Gray.gray300 }}>
+        //             <Feather name="menu" size={24} color="black" />
+        //             <Text style={{ fontSize: 18, fontWeight: 500 }}>
+        //                 Profile
+        //             </Text>
+        //             <Ionicons name="settings" size={24} color={Gray.gray500} />
+        //         </View>
+        //         <View style={{ flex: 1, paddingTop: 20, paddingHorizontal: 20, paddingVertical: 20 }}>
+        //             <View style={{ flexDirection: 'row' }}>
+        //                 <Image style={{ height: 100, width: 100, backgroundColor: 'red', borderRadius: 100 }} />
+        //                 <View style={{ paddingTop: 10, paddingHorizontal: 25, maxWidth: 250 }}>
+        //                     <Text style={{ fontSize: 18, fontWeight: '500' }}>
+        //                         Harshil Rana
+        //                     </Text>
+        //                 </View>
+        //             </View>
+        //         </View>
+        //     </View>
+        // </SafeAreaView >
     )
 }
 
