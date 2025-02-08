@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import Navigation from './src/navigation/Navigation';
-import 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SignUp from './src/screens/LoginSignUpScreens/SignUp';
-
-
+import { StatusBar } from "expo-status-bar";
+import Navigation from "./src/navigation/Navigation";
+import "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import SignUp from "./src/screens/LoginSignUpScreens/SignUp";
+import Screen2 from "./src/screens/PostItmeStackScreen/Screen2";
 
 export default function App() {
   return (
     <>
       <SafeAreaProvider>
-        {/* <Navigation /> */}
+        <Navigation />
         {/* <ProductDetail /> */}
-        <SignUp />
+        {/* <Screen2 /> */}
+        {/* <SignUp /> */}
         {/* <StatusBar backgroundColor='black' style='light' />  */}
       </SafeAreaProvider>
     </>
   );
 }
-
