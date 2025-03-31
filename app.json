@@ -19,7 +19,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.harshil4848.FinalYearPro"
     },
     "plugins": [
       [
@@ -30,7 +34,14 @@
       ]
     ],
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "API_URL": "Hello from env",
+      "eas": {
+        "projectId": "ebd0571f-6751-4340-8279-0cd59ae91641"
+      }
     }
   }
 }

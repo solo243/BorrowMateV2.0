@@ -22,22 +22,10 @@ import Screen3 from "../screens/PostItmeStackScreen/Screen3";
 import Orders from "../screens/Orders";
 import SignUp from "../screens/LoginSignUpScreens/SignUp";
 import SignIn from "../screens/LoginSignUpScreens/SignIn";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, initializeAuth, onAuthStateChanged } from "firebase/auth";
 import { ActivityIndicator, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const Navigation = () => {
-  return (
-    <>
-      <NavigationContainer>
-        {/* <LoginSignUp /> */}
-        <Auth />
-        {/* <MyStacks /> */}
-      </NavigationContainer>
-      <Toast config={TostConfigFile} />
-    </>
-  );
-};
+import { auth } from "../firebase/fireabase.config";
 
 const Stack = createStackNavigator();
 export const MyStacks = () => (
@@ -160,7 +148,7 @@ export const BottomTabNavigation = () => (
           )
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name="MyOrders"
       component={Orders}
       options={{
@@ -171,7 +159,7 @@ export const BottomTabNavigation = () => (
             <Ionicons name="newspaper-outline" size={23} color={Gray.gray500} />
           )
       }}
-    />
+    /> */}
     <Tab.Screen
       name="Profile"
       component={Profile}
@@ -187,34 +175,26 @@ export const BottomTabNavigation = () => (
   </Tab.Navigator>
 );
 
+// TODO: For Authetication
 const Auth = () => {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState();
-
-  const auth = getAuth();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const checkAuthState = async () => {
-      const storedUser = await AsyncStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+        await AsyncStorage.setItem("user", JSON.stringify(firebaseUser));
+        console.log("User is logged in: ", firebaseUser.email);
+      } else {
+        setUser(null);
+        await AsyncStorage.removeItem("user");
+        console.log("User is logged out");
       }
+      setLoading(false);
+    });
 
-      const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-        if (firebaseUser) {
-          setUser(firebaseUser);
-          await AsyncStorage.setItem("user", JSON.stringify(firebaseUser)); // Save user
-        } else {
-          setUser(null);
-          await AsyncStorage.removeItem("user"); // Clear user if logged out
-        }
-        setLoading(false);
-      });
-
-      return () => unsubscribe();
-    };
-
-    checkAuthState();
+    return unsubscribe;
   }, []);
 
   if (loading)
@@ -224,7 +204,58 @@ const Auth = () => {
       </View>
     );
 
-  return <>{user ? <MyStacks /> : <LoginSignUp />}</>;
+  return user ? <MyStacks /> : <LoginSignUp />;
+};
+
+// const Auth = () => {
+//   const [loading, setLoading] = useState(true);
+//   const [user, setUser] = useState();
+
+//   useEffect(() => {
+//     const checkAuthState = async () => {
+//       const storedUser = await AsyncStorage.getItem("user");
+//       if (storedUser) {
+//         setUser(JSON.parse(storedUser));
+//         console.log("user is loged in : ---- ", storedUser.email);
+//       }
+
+//       const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+//         if (firebaseUser) {
+//           setUser(firebaseUser);
+//           await AsyncStorage.setItem("user", JSON.stringify(firebaseUser)); // Save user
+//         } else {
+//           setUser(null);
+//           await AsyncStorage.removeItem("user"); // Clear user if logged out
+//         }
+//         console.log("user is loged in : ---- ", firebaseUser.email);
+//         setLoading(false);
+//       });
+
+//       return () => unsubscribe();
+//     };
+
+//     checkAuthState();
+//   }, []);
+
+//   if (loading)
+//     return (
+//       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//         <ActivityIndicator size="large" color={Color.secondary} />
+//       </View>
+//     );
+
+//   return <>{user ? <MyStacks /> : <LoginSignUp />}</>;
+// };
+
+const Navigation = () => {
+  return (
+    <>
+      <NavigationContainer>
+        <Auth />
+      </NavigationContainer>
+      <Toast config={TostConfigFile} />
+    </>
+  );
 };
 
 export default Navigation;

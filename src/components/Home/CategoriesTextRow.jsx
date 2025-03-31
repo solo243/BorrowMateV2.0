@@ -8,10 +8,10 @@ const CategoriesTextRow = ({ text, Refirect }) => {
     return (
         <View style={style.mainRow}>
             <Text style={style.cateText}>{text}</Text>
-            <TouchableOpacity style={style.viewAllRow}>
-                <Text style={style.viewAllText}>View All</Text>
-                <AntDesign name="arrowright" size={15} color={Gray.gray500} />
-            </TouchableOpacity>
+            {/* <TouchableOpacity style={style.viewAllRow}> */}
+                {/* <Text style={style.viewAllText}>View All</Text> */}
+                {/* <AntDesign name="arrowright" size={15} color={Gray.gray500} /> */}
+            {/* </TouchableOpacity> */}
         </View>
     )
 }

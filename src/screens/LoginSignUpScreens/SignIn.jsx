@@ -1,9 +1,26 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import InputText from "../../components/SignInSignUp/TextInput";
 import { Color, Gray } from "../../constants/Colors";
+import { signInFunction } from "../../firebase/firebase.function";
 
 const SignIn = ({ navigation }) => {
+  const [Email, setEmail] = useState();
+  const [Password, setPassword] = useState();
+
+  const handlePress = () => {
+    try {
+      if (Email && Password) {
+        signInFunction(Email, Password);
+        
+      } else {
+        console.log("Please fill all the fields");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ flex: 1, backgroundColor: "white", paddingTop: 25 }}>
@@ -19,11 +36,13 @@ const SignIn = ({ navigation }) => {
         </View>
         <View style={{ flex: 1, paddingTop: 45, gap: 20 }}>
           <InputText
+            setter={setEmail}
             lable={"Email"}
             placeholder={"Enter your Email Id here..."}
             inputMode="email"
           />
           <InputText
+            setter={setPassword}
             lable={"Password"}
             placeholder={"Enter your password here..."}
             secureTextEntry={true}
@@ -69,7 +88,7 @@ const SignIn = ({ navigation }) => {
               alignSelf: "center",
               alignItems: "center"
             }}
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={handlePress}
           >
             <Text style={{ color: "white", fontWeight: "600", fontSize: 16 }}>
               Sign In
